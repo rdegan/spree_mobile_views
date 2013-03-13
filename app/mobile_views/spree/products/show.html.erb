@@ -1,16 +1,16 @@
 <div data-role="content">
-  <h1><%= @product.name %></h1>
+  <h1><%= accurate_title %></h1>
   <table>
     <tr>
       <td id="main-image">
-        <%= render 'image' %>
+        <%= render :partial => 'image' %>
       </td>
     </tr>
     <tr>
       <td>
         <%= hook :cart_form do %>
           <div id="cart-form">
-            <%= render 'cart_form' %>
+            <%= render :partial => 'cart_form' %>
           </div>
         <% end %>    
       </td>
@@ -19,10 +19,10 @@
       <td colspan="2">
         <div id="product-description">
           <%= hook :product_description do %>
-            <%= product_description(@product) rescue t("product_has_no_description") %>
+            <%= product_description(@product) rescue t(:product_has_no_description) %>
           <% end %>
           <%= hook :product_properties do %>
-            <%= render 'properties' %>
+            <%= render :partial => 'properties' %>
           <% end %>
         </div>
       </td>

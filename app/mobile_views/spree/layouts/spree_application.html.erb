@@ -2,20 +2,7 @@
           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <title><%= title %></title>
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
-    <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-    <script type="text/javascript">
-    //<![CDATA[
-      $(document).bind("mobileinit", function(){
-        $.mobile.ajaxEnabled = false;
-      });
-    //]]>
-    </script>
-    <script src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
-    <%= javascript_include_tag 'rails' %>
-    <%= stylesheet_link_tag 'mobile' %>
-    <%= csrf_meta_tag %>
+	<%= render :partial => 'spree/shared/head' %>
   </head>
   <body>
     <div data-role="page">
@@ -25,13 +12,13 @@
         <a href="?mobile=0" data-icon="gear" data-ajax="false" class="ui-btn-right"><%= t(:full_site)%></a>
         <div data-role="navbar">
           <ul>
-            <% if current_user %>
-              <li><%= link_to t('my_account'), account_path, :class => css_class(account_path) %></li>
-              <li><%= link_to t('logout'), destroy_user_session_path %></li>
+            <% if spree_current_user %>
+              <li><%= link_to t(:my_account), spree.account_path, :class => css_class(spree.account_path) %></li>
+              <li><%= link_to t(:logout), spree.destroy_user_session_path %></li>
             <% else %>
-              <li><%= link_to t('log_in'), login_path, :class => css_class(login_path) %></li>
+              <li><%= link_to t(:login), spree.login_path, :class => css_class(spree.login_path) %></li>
             <% end %>
-            <li><%= link_to t(:search), search_path, :class => css_class(search_path) %></li>
+            <li><%= link_to t(:search), spree.search_path, :class => css_class(spree.search_path) %></li>
             <li><%= link_to_cart %></li>
           </ul>
         </div>
@@ -70,6 +57,6 @@
         </div>
         <div id="footer-right" data-hook="footer_right"></div>
       </div>
-      <%= render 'shared/google_analytics' %>
+      <%= render 'spree/shared/google_analytics' %>
   </body>
 </html>

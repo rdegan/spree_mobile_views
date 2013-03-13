@@ -1,0 +1,19 @@
+<title><%= title %></title>
+<link rel="apple-touch-icon" href="<%= url_for("/assets/store/mobile/apple-touch-icon.png") %>" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+	//<![CDATA[
+	  $(document).bind("mobileinit", function(){
+	    $.mobile.ajaxEnabled = false;
+	  });
+	//]]>
+</script>
+<script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+<%== meta_data_tags %>
+<%= favicon_link_tag image_path('favicon.ico') %>
+<%= stylesheet_link_tag 'store/mobile' %>
+<%= csrf_meta_tag %>
+<%= javascript_include_tag 'store/mobile' %>
+<%= yield :head %>
